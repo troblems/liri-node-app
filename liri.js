@@ -6,6 +6,7 @@ var Spotify = require("node-spotify-api");
 var fs = require("fs");
 var movie;
 var song;
+var tweet;
 
 //arguements from NPM
 var userInput = process.argv[2];
@@ -20,7 +21,7 @@ function switchin(){
     break;
 
   case "spotify-this-song":
-    songifyThis();
+    spotifyThis();
     break;
 
   case "movie-this":
@@ -60,9 +61,12 @@ function movieThis(movie){
         });
       };
     };
+function myTweets(tweet) {
+  console.log("Flippin the bird")
+};
 
 function doWhat(iWant){
-  console.log("");
+  console.log("Bad idea.");
   fs.readfile("random.txt", "utf8", function (error, data) {
   if(error) {
     console.log(error)
@@ -71,3 +75,15 @@ function doWhat(iWant){
   };
 });
 };
+
+function spotifyThis(song) {
+  console.log("Time for some tunes?")
+
+
+  spotify.search({ type: 'track', query: 'The Sign' }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+
+  console.log(data);
+  });
