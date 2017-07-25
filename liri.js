@@ -61,29 +61,34 @@ function movieThis(movie){
         });
       };
     };
+
 function myTweets(tweet) {
   console.log("Flippin the bird")
 };
 
-function doWhat(iWant){
-  console.log("Bad idea.");
-  fs.readfile("random.txt", "utf8", function (error, data) {
-  if(error) {
-    console.log(error)
-  }else{
-
-  };
-});
-};
-
 function spotifyThis(song) {
   console.log("Time for some tunes?")
-
-
   spotify.search({ type: 'track', query: 'The Sign' }, function(err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-
   console.log(data);
   });
+};
+
+function doWhat(iWant){
+  console.log("Bad idea. Now this song is stuck in your head forever.");
+  fs.readfile("random.txt", "utf8", function (error, data) {
+    var parameters = data.split(",");
+		var clean = parameters[1].replace(/"/g , " ").trim();
+		command_line_parameters(parameters[0],clean);
+  });
+};
+
+  function log (data) {
+    fs.appendFile("log.txt", data, function (error) {
+        if(error){
+          console.log(error);
+        }
+    });
+  }
